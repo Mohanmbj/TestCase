@@ -10,10 +10,13 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import objects.AddBook;
+import objects.EditBook;
 
 public class TestCases {
 	
 	WebDriver driver;
+	AddBook page;
+	EditBook pg;
 	
 	
 	@BeforeTest
@@ -25,11 +28,24 @@ public class TestCases {
 		driver.get("https://react-restapi-5a849.web.app/home");
 	}
 	
-	@Test(priority = 0)
+	@Test(priority = 0,enabled = false)
 	public void createbook() throws InterruptedException {
-		AddBook page=new AddBook(driver);
+		page=new AddBook(driver);
 		page.addbk();
-		page.bookdetails("Badri","Legend", "1998", "Herotic");
+		page.bookdetails("sultan","Playboy", "1099", "Romeo");
+	}
+	
+	@Test(priority = 1,enabled = false)
+	public void bookdeatils() throws InterruptedException{
+		page=new AddBook(driver);
+		page.booklist("sultan","Playboy", "1099", "Romeo");
+	}
+	
+	@Test(priority = 2)
+	public void updatebookdetails() throws InterruptedException {
+		pg=new EditBook(driver);
+		pg.editbkdetails("Maths");
+		pg.updatedbooklist("Maths","good book 1", "2012", "Romance, Thriller");
 	}
 	
 	@AfterTest

@@ -5,7 +5,7 @@
     <classes>
       <class name="testSenarios.TestCases">
         <methods>
-          <include name="createbook"/>
+          <include name="updatebookdetails"/>
           <include name="aftertest"/>
           <include name="befortest"/>
         </methods>
