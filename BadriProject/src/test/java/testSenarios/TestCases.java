@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import objects.AddBook;
+import objects.BasicFunctions;
 import objects.EditBook;
 
 public class TestCases {
@@ -17,6 +18,7 @@ public class TestCases {
 	WebDriver driver;
 	AddBook page;
 	EditBook pg;
+	BasicFunctions bf;
 	
 	
 	@BeforeTest
@@ -41,11 +43,23 @@ public class TestCases {
 		page.booklist("sultan","Playboy", "1099", "Romeo");
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,enabled = false)
 	public void updatebookdetails() throws InterruptedException {
 		pg=new EditBook(driver);
 		pg.editbkdetails("Maths");
 		pg.updatedbooklist("Maths","good book 1", "2012", "Romance, Thriller");
+	}
+	
+	@Test(priority = 3)
+	public void backoption() {
+		bf=new BasicFunctions(driver);
+		bf.back();
+		}
+	
+	@Test(priority = 4)
+	public void bookdel() {
+		bf=new BasicFunctions(driver);
+		bf.deletebook();
 	}
 	
 	@AfterTest
